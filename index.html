@@ -633,18 +633,63 @@
       inset: 0;
       z-index: 4000;
       pointer-events: none;
+      --cr: 140px;
       background: radial-gradient(
-        circle 140px at var(--cx, 50%) var(--cy, 40%),
+        circle var(--cr) at var(--cx, 50%) var(--cy, 40%),
         transparent 0%,
-        transparent 35%,
-        rgba(8, 3, 1, 0.55) 55%,
-        rgba(5, 2, 1, 0.92) 75%,
+        transparent 32%,
+        rgba(8, 3, 1, 0.45) 52%,
+        rgba(5, 2, 1, 0.88) 72%,
         #030101 100%
       );
-      transition: background 0.08s linear;
+      transition: background 0.12s linear;
     }
     body.candle-mode #candle-overlay {
       display: block;
+    }
+    /* Candle light size controls */
+    #candle-controls {
+      display: none;
+      position: fixed;
+      bottom: 4.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4003;
+      gap: 0.6rem;
+      align-items: center;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(10px);
+      padding: 0.45rem 0.8rem;
+      border-radius: 40px;
+      border: 1px solid rgba(255,200,100,0.25);
+      pointer-events: auto;
+    }
+    body.candle-mode #candle-controls {
+      display: flex;
+    }
+    #candle-controls button {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 180, 60, 0.25);
+      color: #ffd9a0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #candle-controls button:active {
+      background: rgba(255, 180, 60, 0.5);
+      transform: scale(0.92);
+    }
+    #candle-controls .light-label {
+      color: #ffd9a0;
+      font-size: 0.8rem;
+      min-width: 72px;
+      text-align: center;
     }
     /* Moving candle lamp */
     #candle-lamp {
@@ -1072,6 +1117,11 @@
     <div class="lamp-body"></div>
   </div>
   <div id="candle-hint">🕯️ Move your finger / mouse to light up the memories</div>
+  <div id="candle-controls">
+    <button id="light-down" title="Decrease light">−</button>
+    <span class="light-label" id="light-label">Light: Med</span>
+    <button id="light-up" title="Increase light">+</button>
+  </div>
 
   <audio id="bg-music" loop preload="auto">
     <source src="bg-music.mp3" type="audio/mpeg">
@@ -1990,6 +2040,36 @@ Happy 22nd Birthday!`;
       lamp.style.left = x + 'px';
       lamp.style.top = y + 'px';
     }
+
+    // Candle light size control
+    const lightSizes = [
+      { r: 90,  label: 'Light: Low' },
+      { r: 140, label: 'Light: Med' },
+      { r: 200, label: 'Light: High' },
+      { r: 280, label: 'Light: Max' }
+    ];
+    let lightIndex = 1;
+
+    function setCandleLight(index) {
+      lightIndex = Math.max(0, Math.min(lightSizes.length - 1, index));
+      const size = lightSizes[lightIndex];
+      const overlay = document.getElementById('candle-overlay');
+      if (overlay) overlay.style.setProperty('--cr', size.r + 'px');
+      const label = document.getElementById('light-label');
+      if (label) label.textContent = size.label;
+    }
+
+    document.getElementById('light-up')?.addEventListener('click', e => {
+      e.stopPropagation();
+      setCandleLight(lightIndex + 1);
+    });
+    document.getElementById('light-down')?.addEventListener('click', e => {
+      e.stopPropagation();
+      setCandleLight(lightIndex - 1);
+    });
+    // Prevent touch on controls from moving candle awkwardly
+    document.getElementById('candle-controls')?.addEventListener('touchstart', e => e.stopPropagation());
+    document.getElementById('candle-controls')?.addEventListener('touchmove', e => e.stopPropagation());
 
     // Desktop: mouse move
     document.addEventListener('mousemove', e => {

@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Happy 22nd Birthday Fathima Rinshida ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #c41e3a;
+      --primary-dark: #8b1528;
+      --pink: #ff6b9d;
+      --soft-pink: #ffe4ec;
+      --gold: #d4af37;
+      --gold-light: #f5e6c8;
+      --deep-red: #6b0f1a;
+      --white: #ffffff;
+      --cream: #fff9f5;
+      --text: #2c1810;
+      --shadow: 0 20px 60px rgba(196, 30, 58, 0.25);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== LOCK SCREEN ========== */
+    #lock-screen {
+      position: fixed; inset: 0; z-index: 9999;
+      background: linear-gradient(135deg, #1a0a0f 0%, #3d0a1a 40%, #6b0f1a 70%, #c41e3a 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transition: opacity 1.2s ease, visibility 1.2s; overflow: hidden;
+    }
+    #lock-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .particle {
+      position: absolute; width: 8px; height: 8px; background: var(--gold);
+      border-radius: 50%; opacity: 0.6; animation: float-up 8s infinite linear;
+    }
+    @keyframes float-up {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 0.7; } 90% { opacity: 0.5; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+    .lock-content { text-align: center; z-index: 2; padding: 1.5rem; max-width: 520px; width: 92%; }
+    .lock-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 7vw, 3.5rem); color: var(--gold-light);
+      margin-bottom: 0.4rem; text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+      to { text-shadow: 0 0 40px rgba(212, 175, 55, 0.8), 0 0 60px rgba(255, 107, 157, 0.3); }
+    }
+    .lock-content .subtitle { color: var(--soft-pink); font-size: clamp(1rem, 3.5vw, 1.2rem); margin-bottom: 1.5rem; letter-spacing: 1.5px; }
+    .countdown-box {
+      background: rgba(255,255,255,0.08); backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px;
+      padding: 1.2rem 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    .countdown-label { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .countdown { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
+    .count-item { text-align: center; min-width: 60px; }
+    .count-item span {
+      display: block; font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 700; color: var(--white); line-height: 1;
+    }
+    .count-item small { color: var(--soft-pink); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+    .dob-form {
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+      border-radius: 18px; padding: 1.4rem; border: 1px solid rgba(255,255,255,0.15);
+    }
+    .dob-form label { display: block; color: var(--gold-light); font-size: 0.9rem; margin-bottom: 0.7rem; letter-spacing: 1px; }
+    .dob-form input {
+      width: 100%; padding: 13px 16px; border: 2px solid rgba(212, 175, 55, 0.4);
+      border-radius: 12px; background: rgba(0,0,0,0.3); color: var(--white);
+      font-size: 1.05rem; text-align: center; letter-spacing: 2px; outline: none; transition: border-color 0.3s;
+    }
+    .dob-form input:focus { border-color: var(--gold); }
+    .dob-form input::placeholder { color: rgba(255,255,255,0.4); letter-spacing: 1px; }
+    .dob-form button {
+      margin-top: 1rem; width: 100%; padding: 13px;
+      background: linear-gradient(135deg, var(--gold), #b8860b); border: none; border-radius: 12px;
+      color: var(--deep-red); font-weight: 600; font-size: 1rem; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s; letter-spacing: 1px;
+    }
+    .dob-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5); }
+    .error-msg { color: #ff6b6b; font-size: 0.85rem; margin-top: 0.7rem; opacity: 0; transition: opacity 0.3s; }
+    .error-msg.show { opacity: 1; }
+    .heart-icon { font-size: 2.2rem; margin-bottom: 0.8rem; animation: heartbeat 1.5s ease-in-out infinite; }
+    @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+
+    /* Music + Narration buttons */
+    .control-buttons {
+      position: fixed; bottom: 20px; right: 16px; z-index: 1500;
+      display: none; flex-direction: column; gap: 10px;
+    }
+    .control-buttons.visible { display: flex; }
+    .music-control, .narrate-btn {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--pink));
+      border: none; color: white; font-size: 1.35rem; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s;
+    }
+    .music-control:hover, .narrate-btn:hover { transform: scale(1.1); }
+    .music-control.playing { animation: pulse-music 2s infinite; }
+    @keyframes pulse-music {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.5); }
+      50% { box-shadow: 0 0 0 10px rgba(196, 30, 58, 0); }
+    }
+
+    /* ========== BIRTHDAY ARRIVED OVERLAY ========== */
+    #birthday-arrived {
+      position: fixed; inset: 0; z-index: 10000;
+      background: linear-gradient(135deg, #1a0a0f, #6b0f1a, #c41e3a);
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 1.5rem;
+      animation: fadeIn 1s ease;
+    }
+    #birthday-arrived.active { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .bday-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 9vw, 4.5rem);
+      color: var(--gold-light);
+      text-shadow: 0 0 40px rgba(212,175,55,0.7);
+      animation: bounceIn 1.2s cubic-bezier(0.34,1.56,0.64,1);
+      margin-bottom: 0.5rem;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .bday-sub {
+      font-size: clamp(1.1rem, 4vw, 1.6rem);
+      color: var(--soft-pink);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 1s 0.4s both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .bday-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 5vw, 2.2rem);
+      color: white;
+      margin-bottom: 2rem;
+      animation: fadeUp 1s 0.7s both;
+    }
+    .bday-btn {
+      padding: 14px 36px;
+      background: linear-gradient(135deg, var(--gold), #b8860b);
+      border: none; border-radius: 50px;
+      color: var(--deep-red); font-weight: 700; font-size: 1.1rem;
+      cursor: pointer; box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+      animation: fadeUp 1s 1s both;
+      transition: transform 0.2s;
+    }
+    .bday-btn:hover { transform: scale(1.05); }
+    .floating-hearts-bday {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .fh { position: absolute; font-size: 1.5rem; animation: rise 6s linear infinite; opacity: 0.7; }
+    @keyframes rise {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ========== MAIN ========== */
+    #main-content { display: none; opacity: 0; transition: opacity 1s ease; }
+    #main-content.visible { display: block; opacity: 1; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255, 249, 245, 0.95); backdrop-filter: blur(12px);
+      padding: 0.75rem 1.2rem; display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 4px 20px rgba(196, 30, 58, 0.08);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--primary); font-weight: 700; }
+    .nav-links { display: none; gap: 1.2rem; list-style: none; }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+    .nav-links a {
+      text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 500;
+      transition: color 0.2s; position: relative;
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh; min-height: 100dvh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 5rem 1.2rem 3rem;
+      background: linear-gradient(160deg, var(--soft-pink) 0%, var(--cream) 50%, #fff0f5 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero-inner {
+      max-width: 1100px; width: 100%;
+      display: flex; flex-direction: column; gap: 2rem; align-items: center; text-align: center;
+    }
+    @media (min-width: 768px) {
+      .hero-inner { display: grid; grid-template-columns: 1fr 1fr; text-align: left; gap: 2.5rem; }
+      .hero-photo { order: 0; }
+    }
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 6vw, 3.5rem);
+      color: var(--deep-red); line-height: 1.15; margin-bottom: 0.8rem;
+    }
+    .hero-text h1 span { color: var(--primary); display: block; }
+    .hero-text .tagline { font-size: clamp(0.95rem, 2.5vw, 1.1rem); color: #666; margin-bottom: 1.2rem; line-height: 1.6; }
+    .hero-text .age-badge {
+      display: inline-block; background: linear-gradient(135deg, var(--primary), var(--pink));
+      color: white; padding: 0.45rem 1.2rem; border-radius: 50px; font-weight: 600;
+      font-size: 0.95rem; margin-bottom: 1.2rem; box-shadow: 0 8px 25px rgba(196, 30, 58, 0.3);
+    }
+    .hero-photo { position: relative; max-width: 340px; width: 100%; }
+    @media (min-width: 768px) { .hero-photo { max-width: none; } }
+    .hero-photo img {
+      width: 100%; border-radius: 20px; box-shadow: var(--shadow);
+      object-fit: cover; max-height: 480px;
+    }
+    .hero-photo::after {
+      content: '❤️'; position: absolute; bottom: -12px; right: -8px;
+      font-size: 2.5rem; animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+    section { padding: 3.5rem 1.2rem; max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 5vw, 2.4rem);
+      text-align: center; color: var(--deep-red); margin-bottom: 0.4rem;
+    }
+    .section-subtitle { text-align: center; color: #777; margin-bottom: 1.8rem; font-size: clamp(0.85rem, 2.5vw, 1.05rem); padding: 0 0.5rem; }
+
+    /* Timeline */
+    .timeline-section {
+      background: linear-gradient(180deg, var(--cream) 0%, #fff5f8 100%);
+      max-width: 100%; padding: 3.5rem 1rem;
+    }
+    .timeline { position: relative; max-width: 900px; margin: 0 auto; padding: 1.5rem 0; }
+    .timeline::before {
+      content: ''; position: absolute; left: 18px; top: 0; bottom: 0; width: 3px;
+      background: linear-gradient(to bottom, var(--pink), var(--primary), var(--gold));
+      border-radius: 4px;
+    }
+    @media (min-width: 768px) {
+      .timeline::before { left: 50%; transform: translateX(-50%); }
+    }
+    .timeline-item {
+      display: flex; justify-content: flex-start; padding-left: 50px;
+      position: relative; margin-bottom: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      .timeline-item { justify-content: flex-end; padding-right: calc(50% + 35px); padding-left: 0; }
+      .timeline-item:nth-child(even) { justify-content: flex-start; padding-right: 0; padding-left: calc(50% + 35px); }
+    }
+    .timeline-item::before {
+      content: ''; position: absolute; left: 18px; top: 26px; width: 16px; height: 16px;
+      background: var(--gold); border: 3px solid var(--white); border-radius: 50%;
+      transform: translateX(-50%); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3); z-index: 2;
+    }
+    @media (min-width: 768px) {
+      .timeline-item::before { left: 50%; }
+    }
+    .timeline-card {
+      background: white; border-radius: 16px; padding: 1.2rem;
+      box-shadow: 0 8px 30px rgba(196, 30, 58, 0.1); max-width: 320px; width: 100%;
+      cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; border: 2px solid transparent; position: relative;
+    }
+    .timeline-card:hover, .timeline-card:active {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(196, 30, 58, 0.2); border-color: var(--pink);
+    }
+    .timeline-card .year { font-size: 0.75rem; color: var(--primary); font-weight: 600; letter-spacing: 1px; margin-bottom: 0.3rem; }
+    .timeline-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--deep-red); margin-bottom: 0.4rem; }
+    .timeline-card p { font-size: 0.85rem; color: #666; line-height: 1.5; }
+    .timeline-card .open-hint { margin-top: 0.6rem; font-size: 0.75rem; color: var(--pink); font-weight: 500; }
+    .timeline-card .age-tag {
+      position: absolute; top: 10px; right: 10px; background: var(--soft-pink);
+      color: var(--primary); font-size: 0.7rem; font-weight: 600; padding: 3px 8px; border-radius: 16px;
+    }
+
+    /* Gallery */
+    .album-section { background: linear-gradient(180deg, #fff5f8 0%, var(--cream) 100%); }
+    .album-filters {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem;
+    }
+    .filter-btn {
+      padding: 0.4rem 0.9rem; border-radius: 50px; border: 2px solid var(--pink);
+      background: white; color: var(--primary); font-size: 0.8rem; font-weight: 500;
+      cursor: pointer; transition: all 0.25s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--pink));
+      color: white; border-color: transparent;
+    }
+    .album-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem;
+    }
+    @media (min-width: 500px) { .album-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); } }
+    @media (min-width: 768px) { .album-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.3rem; } }
+    .album-item {
+      position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 3/4;
+      cursor: pointer; box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    }
+    .album-item.hidden { display: none; }
+    .album-item:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 16px 40px rgba(196, 30, 58, 0.22); }
+    .album-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.45s; }
+    .album-item:hover img { transform: scale(1.07); }
+    .album-item .caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white; padding: 1.5rem 0.8rem 0.8rem; font-size: 0.8rem; font-weight: 500;
+    }
+
+    /* Messages */
+    .messages-section { background: linear-gradient(135deg, #fff0f5, var(--cream)); }
+    .messages-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+    @media (min-width: 600px) { .messages-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px) { .messages-grid { grid-template-columns: repeat(3, 1fr); } }
+    .message-card {
+      background: white; border-radius: 16px; padding: 1.4rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06); border-left: 4px solid var(--primary);
+      transition: transform 0.3s;
+    }
+    .message-card:hover { transform: translateY(-4px); }
+    .message-card .emoji { font-size: 1.5rem; margin-bottom: 0.6rem; }
+    .message-card p { font-size: 0.95rem; line-height: 1.6; color: #444; font-style: italic; }
+
+    /* Final Wishes - Extra Animation */
+    .wishes-section {
+      text-align: center; padding-bottom: 5rem;
+      position: relative; overflow: hidden;
+    }
+    .wishes-section .section-title {
+      animation: wishesTitle 1.5s ease both;
+    }
+    @keyframes wishesTitle {
+      0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .wishes-photo {
+      max-width: 360px; margin: 0 auto 1.8rem; border-radius: 20px; overflow: hidden;
+      box-shadow: var(--shadow);
+      animation: photoReveal 1.8s cubic-bezier(0.34,1.56,0.64,1) both;
+      position: relative;
+    }
+    @keyframes photoReveal {
+      0% { opacity: 0; transform: scale(0.6) rotate(-5deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0); }
+    }
+    .wishes-photo img { width: 100%; display: block; }
+    .wishes-photo::before {
+      content: '';
+      position: absolute; inset: -4px;
+      background: linear-gradient(45deg, var(--gold), var(--pink), var(--primary), var(--gold));
+      border-radius: 24px; z-index: -1;
+      animation: borderGlow 3s linear infinite;
+      background-size: 300% 300%;
+    }
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .final-message {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      color: var(--deep-red); max-width: 680px; margin: 0 auto 1.3rem; line-height: 1.5;
+      animation: fadeUp 1.2s 0.5s both;
+    }
+    .signature {
+      font-size: 1.05rem; color: var(--primary); font-weight: 500;
+      animation: fadeUp 1.2s 0.8s both;
+    }
+    .wishes-hearts {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .wh {
+      position: absolute; font-size: 1.2rem; opacity: 0;
+      animation: floatHeart 5s ease-in-out infinite;
+    }
+    @keyframes floatHeart {
+      0% { opacity: 0; transform: translateY(0) scale(0.5); }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.6; }
+      100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(20, 5, 10, 0.88); backdrop-filter: blur(8px);
+      z-index: 2000; display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; padding: 1rem;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal {
+      background: white; border-radius: 22px; max-width: 640px; width: 100%; max-height: 88vh;
+      overflow-y: auto; transform: scale(0.88) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+    }
+    .modal-overlay.active .modal { transform: scale(1) translateY(0); }
+    .modal-header { padding: 1.2rem 1.4rem 0.4rem; display: flex; justify-content: space-between; align-items: flex-start; }
+    .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--deep-red); }
+    .modal-close {
+      background: var(--soft-pink); border: none; width: 36px; height: 36px; border-radius: 50%;
+      font-size: 1.2rem; cursor: pointer; color: var(--primary); display: flex; align-items: center; justify-content: center;
+    }
+    .modal-body { padding: 0.4rem 1.4rem 1.5rem; }
+    .modal-body .date-badge {
+      display: inline-block; background: linear-gradient(135deg, var(--primary), var(--pink));
+      color: white; padding: 0.3rem 0.9rem; border-radius: 16px; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.8rem;
+    }
+    .modal-body p { color: #555; line-height: 1.6; margin-bottom: 1rem; font-size: 0.95rem; }
+    .modal-photos { display: grid; gap: 0.9rem; grid-template-columns: 1fr; }
+    @media (min-width: 500px) { .modal-photos { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } }
+    .modal-photos img { width: 100%; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+    .narrate-photo-btn {
+      margin-top: 0.8rem; padding: 8px 16px; background: var(--soft-pink); border: none;
+      border-radius: 20px; color: var(--primary); font-size: 0.85rem; font-weight: 500; cursor: pointer;
+    }
+
+    #confetti-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 10001; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 3000;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s; padding: 0.8rem;
+    }
+    .lightbox.active { opacity: 1; visibility: visible; }
+    .lightbox img { max-width: 96%; max-height: 85vh; border-radius: 10px; box-shadow: 0 15px 50px rgba(0,0,0,0.5); }
+    .lightbox-close {
+      position: absolute; top: 14px; right: 14px; background: rgba(255,255,255,0.15);
+      border: none; color: white; font-size: 1.8rem; width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+    }
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.15); border: none; color: white;
+      font-size: 1.8rem; width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+    }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+  </style>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+
+  <audio id="bg-music" loop preload="auto">
+    <source src="bg-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="control-buttons" id="control-buttons">
+    <button class="music-control" id="music-btn" title="Music">🎵</button>
+    <button class="narrate-btn" id="narrate-btn" title="Malayalam Narration">🗣️</button>
+  </div>
+
+  <!-- BIRTHDAY ARRIVED SPECIAL SCREEN -->
+  <div id="birthday-arrived">
+    <div class="floating-hearts-bday" id="bday-hearts"></div>
+    <h1 class="bday-title">🎉 Happy Birthday! 🎉</h1>
+    <p class="bday-sub">The day we have been waiting for is here</p>
+    <p class="bday-name">Fathima Rinshida P</p>
+    <button class="bday-btn" id="enter-bday-btn">Enter the Celebration ❤️</button>
+  </div>
+
+  <!-- LOCK SCREEN -->
+  <div id="lock-screen">
+    <div class="particles" id="particles"></div>
+    <div class="lock-content">
+      <div class="heart-icon">💖</div>
+      <h1>Fathima Rinshida P</h1>
+      <p class="subtitle">A Special Surprise Awaits You</p>
+      <div class="countdown-box">
+        <div class="countdown-label">Countdown to Your Special Day</div>
+        <div class="countdown" id="countdown">
+          <div class="count-item"><span id="days">00</span><small>Days</small></div>
+          <div class="count-item"><span id="hours">00</span><small>Hours</small></div>
+          <div class="count-item"><span id="minutes">00</span><small>Mins</small></div>
+          <div class="count-item"><span id="seconds">00</span><small>Secs</small></div>
+        </div>
+      </div>
+      <div class="dob-form">
+        <label for="dob-input">Enter your Date of Birth to unlock ✨</label>
+        <input type="text" id="dob-input" placeholder="DD/MM/YYYY" maxlength="10" autocomplete="off">
+        <button id="unlock-btn">Open My Heart ❤️</button>
+        <p class="error-msg" id="error-msg">Hmm... that is not the correct date 💕 Please try again!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main-content">
+    <nav>
+      <div class="nav-logo">Rinshida ❤️</div>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#timeline">Our Journey</a></li>
+        <li><a href="#baby-growth">Baby Growth</a></li>
+        <li><a href="#album">Photo Album</a></li>
+        <li><a href="#messages">Messages</a></li>
+        <li><a href="#wishes">Wishes</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="age-badge">🎉 Turning 22 🎉</div>
+          <h1>Happy Birthday <span>My Beautiful Wife</span></h1>
+          <p class="tagline">
+            To the most amazing woman, the love of my life, and the wonderful mother of our little princess.
+            Every moment with you is a blessing. Today we celebrate you.
+          </p>
+          <p style="color: var(--primary); font-weight: 500;">23 August 2004 → Forever & Always</p>
+        </div>
+        <div class="hero-photo">
+          <img src="happy birthday wises right side one photo.jpeg" alt="Fathima Rinshida smiling" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <div class="timeline-section" id="timeline">
+      <h2 class="section-title">Our Beautiful Journey</h2>
+      <p class="section-subtitle">From childhood dreams to our forever — click each box to open precious memories ✨</p>
+      <div style="text-align:center;margin-bottom:2rem;">
+        <button id="play-journey-narration" style="padding:12px 24px;background:linear-gradient(135deg,#c41e3a,#ff6b9d);color:white;border:none;border-radius:50px;font-size:0.95rem;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(196,30,58,0.3);">
+          🗣️ Play Full Journey Narration (Malayalam)
+        </button>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-card" data-modal="childhood">
+            <span class="age-tag">Age 1–12</span>
+            <div class="year">Childhood</div>
+            <h3>Little Princess</h3>
+            <p>The beginning of a beautiful soul who would one day light up my entire world.</p>
+            <div class="open-hint">📂 Open to see photos</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-card" data-modal="school">
+            <span class="age-tag">Age 13–18</span>
+            <div class="year">School Years</div>
+            <h3>Growing Bright</h3>
+            <p>Learning, dreaming, and becoming the incredible woman you are today.</p>
+            <div class="open-hint">📂 Open to see photos</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-card" data-modal="finish-school">
+            <span class="age-tag">Age 18</span>
+            <div class="year">Around 2022</div>
+            <h3>School Finished</h3>
+            <p>A new chapter begins. Ready to write the most beautiful story of all.</p>
+            <div class="open-hint">✨ Our story starts here</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-card" data-modal="engagement">
+            <span class="age-tag">Age 17</span>
+            <div class="year">22 June 2022</div>
+            <h3>Engagement</h3>
+            <p>The day our hearts officially became one. Forever started right here.</p>
+            <div class="open-hint">📂 Open memory</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-card" data-modal="nikkah">
+            <span class="age-tag">Age 17</span>
+            <div class="year">03 July 2022</div>
+            <h3>Nikkah</h3>
+            <p>Bound together in the most sacred way. My wife, my everything.</p>
+            <div class="open-hint">📂 Open to see photo</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-card" data-modal="marriage">
+            <span class="age-tag">Age 19</span>
+            <div class="year">10 October 2023</div>
+            <h3>Our Wedding</h3>
+            <p>The most beautiful day — you in red, me lost in your eyes forever.</p>
+            <div class="open-hint">📂 Open to see photos</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-card" data-modal="pregnancy">
+            <span class="age-tag">Age 20</span>
+            <div class="year">15 June 2025</div>
+            <h3>Pregnancy</h3>
+            <p>The most magical news. Our little miracle was on the way.</p>
+            <div class="open-hint">📂 Open to see photo</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-card" data-modal="mother">
+            <span class="age-tag">Age 21</span>
+            <div class="year">21 January 2026</div>
+            <h3>Became a Mother</h3>
+            <p>Our precious baby girl arrived. You became the most beautiful mother.</p>
+            <div class="open-hint">📂 Open to meet her</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-card" data-modal="today" style="border-color: var(--gold); background: linear-gradient(135deg, #fff9f0, #fff);">
+            <span class="age-tag" style="background: var(--gold); color: white;">Age 22</span>
+            <div class="year">23 August 2026</div>
+            <h3>Happy 22nd Birthday!</h3>
+            <p>Today we celebrate the most wonderful woman, wife and mother. I love you endlessly.</p>
+            <div class="open-hint">🎂 Open wishes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BABY GROWTH TIMELINE -->
+    <section class="album-section" id="baby-growth" style="background: linear-gradient(180deg, #fff0f5 0%, #fff9f5 100%);">
+      <h2 class="section-title">Our Little Princess Growth</h2>
+      <p class="section-subtitle">From the day she arrived to the beautiful smile we see today 👶💕</p>
+
+      <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem;">
+        <!-- Newborn -->
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; background: white; border-radius: 20px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(196,30,58,0.1);">
+          <div style="background: linear-gradient(135deg, #c41e3a, #ff6b9d); color: white; padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600;">21 January 2026 — Newborn</div>
+          <img src="she is a mother of babygirl.jpeg" alt="Newborn baby" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.12);">
+          <p style="text-align: center; color: #555; font-size: 0.95rem; max-width: 400px;">The most precious day — our little angel entered the world. Tiny hands, tiny feet, and a whole lot of love.</p>
+        </div>
+
+        <!-- Arrow -->
+        <div style="text-align: center; font-size: 2rem; color: #ff6b9d;">↓</div>
+
+        <!-- Toddler / Little Princess -->
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; background: white; border-radius: 20px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(196,30,58,0.1);">
+          <div style="background: linear-gradient(135deg, #d4af37, #ff6b9d); color: white; padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600;">Growing Beautifully — Little Princess</div>
+          <img src="little-princess.png" alt="Little Princess" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.12);">
+          <p style="text-align: center; color: #555; font-size: 0.95rem; max-width: 400px;">Look at that beautiful smile! Our little princess is growing so fast, filling our days with joy and laughter.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO ALBUM -->
+    <section class="album-section" id="album">
+      <h2 class="section-title">Digital Photo Album</h2>
+      <p class="section-subtitle">Every photo tells a story of our love — filter or click to view larger</p>
+      <div class="album-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="childhood">School</button>
+        <button class="filter-btn" data-filter="couple">Us</button>
+        <button class="filter-btn" data-filter="wedding">Wedding</button>
+        <button class="filter-btn" data-filter="family">Family</button>
+        <button class="filter-btn" data-filter="her">Her</button>
+      </div>
+      <div class="album-grid" id="album-grid">
+        <div class="album-item" data-category="childhood" data-full="school-age.jpeg" data-ml="സ്കൂൾ ദിനങ്ങൾ. നിങ്ങളുടെ ലളിതമായ ചിരി എന്നെ എന്നും മോഹിപ്പിക്കുന്നു.">
+          <img src="school-age.jpeg" alt="School age" loading="lazy">
+          <div class="caption">School Days 📚</div>
+        </div>
+        <div class="album-item" data-category="childhood" data-full="teenage.jpeg" data-ml="കൗമാരകാലം. നിങ്ങൾ വളർന്ന് അത്ഭുതകരമായ സ്ത്രീയായി മാറി.">
+          <img src="teenage.jpeg" alt="Teenage" loading="lazy">
+          <div class="caption">Teenage Years</div>
+        </div>
+        <div class="album-item" data-category="childhood" data-full="childhode school age.jpeg" data-ml="സുന്ദരമായ ഓർമ്മകൾ.">
+          <img src="childhode school age.jpeg" alt="Artistic" loading="lazy">
+          <div class="caption">Dreamy Portrait</div>
+        </div>
+        <div class="album-item" data-category="childhood" data-full="childhode school age1.jpeg" data-ml="എലിഗന്റ് സോൾ.">
+          <img src="childhode school age1.jpeg" alt="Artistic 2" loading="lazy">
+          <div class="caption">Elegant Soul</div>
+        </div>
+        <div class="album-item" data-category="couple" data-full="birthday wishesh.jpeg" data-ml="നമ്മൾ ഒരുമിച്ച്. എന്റെ ജീവിതത്തിലെ ഏറ്റവും സുന്ദരമായ നിമിഷങ്ങൾ.">
+          <img src="birthday wishesh.jpeg" alt="Us" loading="lazy">
+          <div class="caption">Us — Side by Side</div>
+        </div>
+        <div class="album-item" data-category="couple" data-full="couple-blue.jpeg" data-ml="നീലയിൽ നിങ്ങൾ അതിമനോഹരമാണ്. ഞാൻ നിങ്ങളെ സ്നേഹിക്കുന്നു.">
+          <img src="couple-blue.jpeg" alt="Couple blue" loading="lazy">
+          <div class="caption">Together Forever</div>
+        </div>
+        <div class="album-item" data-category="couple" data-full="nikhah photo.jpeg" data-ml="നിക്കാഹ് ദിനം. അല്ലാഹുവിന്റെ മുമ്പിൽ നാം ഒന്നായി.">
+          <img src="nikhah photo.jpeg" alt="Nikkah" loading="lazy">
+          <div class="caption">Nikkah Day 🕌</div>
+        </div>
+        <div class="album-item" data-category="wedding" data-full="marrage photo.jpeg" data-ml="വിവാഹദിനം. ചുവപ്പിൽ നിങ്ങൾ ഒരു രാജ്ഞിയായിരുന്നു.">
+          <img src="marrage photo.jpeg" alt="Wedding" loading="lazy">
+          <div class="caption">Wedding Queen ❤️</div>
+        </div>
+        <div class="album-item" data-category="wedding" data-full="marrage photo1.jpeg" data-ml="ആ പ്രത്യേക നിമിഷം. എന്റെ ഹൃദയം ഇപ്പോഴും തുടിക്കുന്നു.">
+          <img src="marrage photo1.jpeg" alt="Wedding 2" loading="lazy">
+          <div class="caption">That Special Moment</div>
+        </div>
+        <div class="album-item" data-category="family" data-full="family-with-baby1.jpeg" data-ml="നമ്മുടെ ചെറിയ കുടുംബം. ഞാൻ അഭിമാനിയാണ്.">
+          <img src="family-with-baby1.jpeg" alt="Family" loading="lazy">
+          <div class="caption">Our Little Family</div>
+        </div>
+        <div class="album-item" data-category="family" data-full="family-with-baby2.jpeg" data-ml="സന്തോഷം. നമ്മുടെ മകൾ ചിരിക്കുമ്പോൾ ലോകം മനോഹരമാകുന്നു.">
+          <img src="family-with-baby2.jpeg" alt="Happy family" loading="lazy">
+          <div class="caption">Happiness 💕</div>
+        </div>
+        <div class="album-item" data-category="family" data-full="family-watercolor.jpeg" data-ml="എന്നും. Forever.">
+          <img src="family-watercolor.jpeg" alt="Watercolor" loading="lazy">
+          <div class="caption">Forever ❤️</div>
+        </div>
+        <div class="album-item" data-category="family" data-full="little-princess.png" data-ml="നമ്മുടെ ചെറിയ രാജകുമാരി. അവൾ നിങ്ങളെപ്പോലെ സുന്ദരിയാണ്.">
+          <img src="little-princess.png" alt="Little princess" loading="lazy">
+          <div class="caption">Our Little Princess 👶</div>
+        </div>
+        <div class="album-item" data-category="family" data-full="she is a mother of babygirl.jpeg" data-ml="പുതിയ ജീവിതം. നിങ്ങൾ അമ്മയായി.">
+          <img src="she is a mother of babygirl.jpeg" alt="Newborn" loading="lazy">
+          <div class="caption">Newborn Days</div>
+        </div>
+        <div class="album-item" data-category="her" data-full="happy birthday wises right side one photo.jpeg" data-ml="എന്റെ എന്നും ചിരി. ഞാൻ നിങ്ങളെ സ്നേഹിക്കുന്നു.">
+          <img src="happy birthday wises right side one photo.jpeg" alt="Smile" loading="lazy">
+          <div class="caption">My Forever Smile 😊</div>
+        </div>
+        <div class="album-item" data-category="her" data-full="rinshida-blue.jpeg" data-ml="നീലയിൽ അതിമനോഹരം.">
+          <img src="rinshida-blue.jpeg" alt="Blue" loading="lazy">
+          <div class="caption">Stunning in Blue</div>
+        </div>
+        <div class="album-item" data-category="her" data-full="pregnancy.jpeg" data-ml="ഗർഭകാലം. നിങ്ങൾ പ്രകാശിച്ചു.">
+          <img src="pregnancy.jpeg" alt="Pregnancy" loading="lazy">
+          <div class="caption">Glowing Mother-to-be</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MESSAGES -->
+    <section class="messages-section" id="messages">
+      <h2 class="section-title">Messages From My Heart</h2>
+      <p class="section-subtitle">Words can never fully express how much you mean to me</p>
+      <div class="messages-grid">
+        <div class="message-card"><div class="emoji">🌹</div><p>"You are not just my wife — you are my best friend, my peace, my home, and my greatest blessing from Allah."</p></div>
+        <div class="message-card"><div class="emoji">👶</div><p>"Watching you become a mother has made me fall in love with you all over again. Our little girl is so lucky to have you."</p></div>
+        <div class="message-card"><div class="emoji">💫</div><p>"Every smile of yours, every laugh, every quiet moment — I treasure them all. Thank you for choosing me every day."</p></div>
+        <div class="message-card"><div class="emoji">❤️</div><p>"22 years of pure beauty, kindness and strength. May this new year bring you endless happiness, good health and love."</p></div>
+        <div class="message-card"><div class="emoji">🌙</div><p>"In this life and the next, I want to walk hand in hand with you. Happy Birthday, my forever."</p></div>
+        <div class="message-card"><div class="emoji">✨</div><p>"Surprise! I made this little world of memories just for you, because you deserve all the love and magic in the universe."</p></div>
+        <div class="message-card"><div class="emoji">🕊️</div><p>"Your presence turns ordinary days into something extraordinary. Thank you for filling our home with so much love and light."</p></div>
+        <div class="message-card"><div class="emoji">🌸</div><p>"You are stronger than you know, more beautiful than you realise, and more loved than you can imagine. Happy 22nd, my love."</p></div>
+        <div class="message-card"><div class="emoji">💍</div><p>"From the day of our Nikkah until now, and for all the years still to come — my heart belongs only to you."</p></div>
+        <div class="message-card"><div class="emoji">👸</div><p>"My queen, my partner, my everything. May Allah continue to bless you with happiness, barakah and countless beautiful moments."</p></div>
+      </div>
+    </section>
+
+    <!-- FINAL WISHES -->
+    <section class="wishes-section" id="wishes">
+      <div class="wishes-hearts" id="wishes-hearts"></div>
+      <h2 class="section-title">Happy Birthday My Love</h2>
+      <p class="section-subtitle">Fathima Rinshida P — 23 August 2004</p>
+      <div class="wishes-photo">
+        <img src="birthday wishesh.jpeg" alt="Us together" loading="lazy">
+      </div>
+      <p class="final-message">
+        May your 22nd year be filled with laughter, good health, endless love, and all the dreams your beautiful heart desires.
+        I am so proud to call you my wife and the mother of our daughter.
+      </p>
+      <p class="signature">Forever yours,<br>Your Husband ❤️</p>
+    </section>
+  </div>
+
+  <!-- MODALS -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Title</h2>
+        <button class="modal-close" id="modal-close">×</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev">‹</button>
+    <img id="lightbox-img" src="" alt="Full size">
+    <button class="lightbox-nav lightbox-next" id="lightbox-next">›</button>
+  </div>
+
+  <script>
+    // ========== COUNTDOWN + BIRTHDAY ARRIVED ==========
+    const birthday = new Date('2026-08-23T00:00:00').getTime();
+    let birthdayTriggered = false;
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = birthday - now;
+
+      if (distance <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+
+        if (!birthdayTriggered) {
+          birthdayTriggered = true;
+          showBirthdayArrived();
+        }
+        return;
+      }
+
+      document.getElementById('days').textContent = String(Math.floor(distance / (1000*60*60*24))).padStart(2,'0');
+      document.getElementById('hours').textContent = String(Math.floor((distance % (1000*60*60*24)) / (1000*60*60))).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(Math.floor((distance % (1000*60*60)) / (1000*60))).padStart(2,'0');
+      document.getElementById('seconds').textContent = String(Math.floor((distance % (1000*60)) / 1000)).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    function showBirthdayArrived() {
+      // Create floating hearts
+      const container = document.getElementById('bday-hearts');
+      for (let i = 0; i < 30; i++) {
+        const h = document.createElement('div');
+        h.className = 'fh';
+        h.textContent = ['❤️','💖','💕','💗','💓'][Math.floor(Math.random()*5)];
+        h.style.left = Math.random() * 100 + '%';
+        h.style.animationDelay = Math.random() * 5 + 's';
+        h.style.animationDuration = (4 + Math.random() * 4) + 's';
+        h.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+        container.appendChild(h);
+      }
+
+      document.getElementById('birthday-arrived').classList.add('active');
+      launchConfetti();
+      setTimeout(launchConfetti, 800);
+      setTimeout(launchConfetti, 1600);
+
+      // Speak Malayalam happy birthday
+      setTimeout(() => {
+        speakMalayalam('ജന്മദിനാശംസകൾ ഫാത്തിമ റിൻഷിദ. നിങ്ങളുടെ 22-ാം ജന്മദിനം സന്തോഷകരമായിരിക്കട്ടെ. ഞാൻ നിങ്ങളെ വളരെ സ്നേഹിക്കുന്നു.');
+      }, 1500);
+    }
+
+    document.getElementById('enter-bday-btn').addEventListener('click', () => {
+      document.getElementById('birthday-arrived').classList.remove('active');
+      // If still locked, unlock automatically
+      if (!document.getElementById('main-content').classList.contains('visible')) {
+        unlockSite();
+      }
+    });
+
+    // ========== PARTICLES ==========
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 40; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDelay = Math.random() * 8 + 's';
+      p.style.animationDuration = (6 + Math.random() * 6) + 's';
+      p.style.width = p.style.height = (4 + Math.random() * 7) + 'px';
+      p.style.opacity = 0.3 + Math.random() * 0.5;
+      if (Math.random() > 0.55) p.style.background = '#ff6b9d';
+      particlesContainer.appendChild(p);
+    }
+
+    // ========== MUSIC ==========
+    const music = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-btn');
+    let isPlaying = false;
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        musicBtn.textContent = '🎵';
+        musicBtn.classList.remove('playing');
+      } else {
+        music.play().catch(()=>{});
+        musicBtn.textContent = '🔊';
+        musicBtn.classList.add('playing');
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // ========== MALAYALAM NARRATION (Web Speech API) ==========
+    function speakMalayalam(text) {
+      if (!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      // Try to find Malayalam voice
+      const voices = window.speechSynthesis.getVoices();
+      const mlVoice = voices.find(v => v.lang.includes('ml') || v.lang.includes('hi') || v.name.toLowerCase().includes('malayalam'));
+      if (mlVoice) utter.voice = mlVoice;
+      utter.lang = 'ml-IN';
+      utter.rate = 0.9;
+      utter.pitch = 1.05;
+      window.speechSynthesis.speak(utter);
+    }
+
+    // Load voices
+    if (window.speechSynthesis) {
+      window.speechSynthesis.onvoiceschanged = () => {};
+      window.speechSynthesis.getVoices();
+    }
+
+    const narrateBtn = document.getElementById('narrate-btn');
+    let narrating = false;
+    narrateBtn.addEventListener('click', () => {
+      if (narrating) {
+        window.speechSynthesis.cancel();
+        narrating = false;
+        narrateBtn.textContent = '🗣️';
+        return;
+      }
+      narrating = true;
+      narrateBtn.textContent = '⏹️';
+      speakMalayalam('പ്രിയപ്പെട്ട ഫാത്തിമ റിൻഷിദ. ഈ വെബ്സൈറ്റ് നിങ്ങൾക്കായി ഉണ്ടാക്കിയ ഒരു സർപ്രൈസ് ആണ്. നിങ്ങളുടെ ജീവിതത്തിലെ സുന്ദരമായ ഓർമ്മകൾ ഇവിടെ ഉണ്ട്. ഞാൻ നിങ്ങളെ എന്നും സ്നേഹിക്കുന്നു. ജന്മദിനാശംസകൾ.');
+      setTimeout(() => { narrating = false; narrateBtn.textContent = '🗣️'; }, 15000);
+    });
+
+    // ========== DOB UNLOCK ==========
+    const correctDOB = ['23/08/2004','23-08-2004','23.08.2004','23082004','23/8/2004'];
+    const unlockBtn = document.getElementById('unlock-btn');
+    const dobInput = document.getElementById('dob-input');
+    const errorMsg = document.getElementById('error-msg');
+
+    dobInput.addEventListener('input', (e) => {
+      let v = e.target.value.replace(/[^\d]/g, '');
+      if (v.length > 2) v = v.slice(0,2) + '/' + v.slice(2);
+      if (v.length > 5) v = v.slice(0,5) + '/' + v.slice(5,9);
+      e.target.value = v;
+    });
+
+    unlockBtn.addEventListener('click', tryUnlock);
+    dobInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') tryUnlock(); });
+
+    function tryUnlock() {
+      const val = dobInput.value.trim();
+      const normalized = val.replace(/[-.]/g, '/');
+      if (correctDOB.includes(val) || correctDOB.includes(normalized)) {
+        unlockSite();
+      } else {
+        errorMsg.classList.add('show');
+        dobInput.style.borderColor = '#ff6b6b';
+        setTimeout(() => { errorMsg.classList.remove('show'); dobInput.style.borderColor = ''; }, 2500);
+      }
+    }
+
+    function unlockSite() {
+      launchConfetti();
+      setTimeout(launchConfetti, 700);
+
+      music.volume = 0.38;
+      music.play().then(() => {
+        isPlaying = true;
+        musicBtn.textContent = '🔊';
+        musicBtn.classList.add('playing');
+      }).catch(()=>{});
+
+      document.getElementById('control-buttons').classList.add('visible');
+
+      const lock = document.getElementById('lock-screen');
+      const main = document.getElementById('main-content');
+      lock.classList.add('hidden');
+      setTimeout(() => {
+        lock.style.display = 'none';
+        main.style.display = 'block';
+        requestAnimationFrame(() => main.classList.add('visible'));
+        // Start wishes hearts
+        createWishesHearts();
+      }, 1100);
+    }
+
+    // ========== CONFETTI ==========
+    function launchConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const pieces = [];
+      const colors = ['#c41e3a','#ff6b9d','#d4af37','#ff9ecd','#fff','#ff4757','#ffd700','#ff69b4'];
+      for (let i = 0; i < 200; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          w: 6 + Math.random() * 9,
+          h: 5 + Math.random() * 7,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          speed: 2.2 + Math.random() * 4.5,
+          rot: Math.random() * 360,
+          rotSpeed: -5 + Math.random() * 10,
+          shape: Math.random() > 0.7 ? 'heart' : (Math.random() > 0.5 ? 'circle' : 'rect'),
+          sway: Math.random() * 2
+        });
+      }
+      let frame = 0;
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+          p.y += p.speed;
+          p.x += Math.sin(frame * 0.04 + p.sway) * 1.3;
+          p.rot += p.rotSpeed;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot * Math.PI / 180);
+          ctx.fillStyle = p.color;
+          if (p.shape === 'circle') {
+            ctx.beginPath(); ctx.arc(0, 0, p.w/2, 0, Math.PI*2); ctx.fill();
+          } else if (p.shape === 'heart') {
+            ctx.font = (p.w+4) + 'px Arial'; ctx.fillText('❤', -p.w/2, p.h/2);
+          } else {
+            ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+          }
+          ctx.restore();
+        });
+        frame++;
+        if (frame < 190) requestAnimationFrame(animate);
+        else ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      animate();
+    }
+
+    // ========== WISHES HEARTS ==========
+    function createWishesHearts() {
+      const container = document.getElementById('wishes-hearts');
+      for (let i = 0; i < 12; i++) {
+        const h = document.createElement('div');
+        h.className = 'wh';
+        h.textContent = '💕';
+        h.style.left = (10 + Math.random() * 80) + '%';
+        h.style.bottom = '10%';
+        h.style.animationDelay = (Math.random() * 4) + 's';
+        h.style.animationDuration = (4 + Math.random() * 3) + 's';
+        container.appendChild(h);
+      }
+    }
+
+    // ========== FULL JOURNEY MALAYALAM NARRATION ==========
+    const fullJourneyML = `ഫാത്തിമ റിൻഷയുടെ 22-ാം പിറന്നാൾ — ജീവിതയാത്ര.
+ഒരു ചെറിയ രാജകുമാരിയായി തുടങ്ങിയൊരു യാത്ര.
+സ്നേഹവും സന്തോഷവും നിറഞ്ഞ ഓർമ്മകളിലൂടെ, ഇന്ന് 22-ാം വയസ്സിന്റെ മനോഹരമായൊരു അധ്യായത്തിലേക്ക്.
+2004 ഓഗസ്റ്റ്. ഫാത്തിമ റിൻഷ ഈ ലോകത്തേക്ക് പിറന്നുവന്നു.
+അന്ന് ഒരു കുഞ്ഞു രാജകുമാരി മാത്രമായിരുന്ന അവൾ, കാലം കടന്നുപോകുമ്പോൾ എല്ലാവരുടെയും പ്രിയപ്പെട്ടവളായി വളർന്നു.
+സ്കൂൾ കാലം. പല സ്കൂളുകളിലായി പഠനം തുടർന്നു.
+ഓരോ സ്കൂളും, ഓരോ കൂട്ടുകാരും, ഓരോ അധ്യാപകരും അവളുടെ ജീവിതത്തിൽ ഓരോ പുതിയ ഓർമ്മകൾ സമ്മാനിച്ചു.
+ഒടുവിൽ 2022-ൽ പ്ലസ് ടു പഠനം പൂർത്തിയാക്കി.
+പഠനത്തിന്റെ ഒരു അധ്യായം അവസാനിച്ചപ്പോൾ, ജീവിതം അവൾക്കായി മറ്റൊരു മനോഹരമായ അധ്യായം തുറക്കുകയായിരുന്നു.
+22 ജൂൺ 2022. അവളുടെ ജീവിതത്തിലെ മറ്റൊരു പ്രധാന ദിവസം.
+വിവാഹനിശ്ചയം. മുഹമ്മദ് ഷരീഫിനൊപ്പം ഒരു പുതിയ ജീവിതത്തിലേക്കുള്ള ആദ്യ ചുവടുവെപ്പ്.
+03 ജൂലൈ 2022. ആ സ്വപ്നം യാഥാർത്ഥ്യമായ ദിവസം.
+നിക്കാഹ്. രണ്ട് ഹൃദയങ്ങൾ ഒന്നായി, രണ്ട് ജീവിതങ്ങൾ ഒരേ വഴിയിലേക്ക് ചേർന്ന ദിവസം.
+പിന്നീട് ഒരു ചെറിയ ഇടവേളയ്ക്ക് ശേഷം. 10 ഒക്ടോബർ 2023. ഞങ്ങളുടെ വിവാഹം.
+അന്നുമുതൽ ജീവിതം കൂടുതൽ മനോഹരമായി. പുതിയ സ്വപ്നങ്ങൾ, പുതിയ ഉത്തരവാദിത്തങ്ങൾ, ഒരുമിച്ചുള്ള പുതിയ യാത്ര.
+വിവാഹത്തിന് ശേഷം ഭർത്താവ് ഗൾഫിലേക്ക് പോയി.
+അകലെയായിരുന്നെങ്കിലും, സ്നേഹത്തിനും കാത്തിരിപ്പിനും ആ ദൂരങ്ങൾ ഒരിക്കലും തടസ്സമായില്ല.
+ഏകദേശം ഒരു വർഷത്തെ കാത്തിരിപ്പിന് ശേഷം, 2024 നവംബറിൽ വീണ്ടും ഒരുമിച്ചെത്തിയ ആ നിമിഷം, കാത്തിരിപ്പിന്റെ സന്തോഷം ഇരട്ടിയാക്കിയ ഒരു മനോഹര ഓർമ്മയായി.
+പിന്നെയും ഒരു പുതിയ സന്തോഷം. രണ്ട് വർഷത്തെ വിവാഹജീവിതത്തിനുശേഷം, അവരുടെ ജീവിതത്തിലേക്ക് മറ്റൊരു വലിയ സന്തോഷവാർത്ത എത്തി.
+2025 ജൂൺ 15. ഫാത്തിമ റിൻഷ ഒരു പുതിയ ജീവിതത്തെ തന്റെ ഉള്ളിൽ സ്വീകരിച്ച ദിവസം.
+അമ്മയാകാനുള്ള യാത്ര ആരംഭിച്ചു.
+ഒരു പെൺകുട്ടിയിൽ നിന്ന്, ഒരു ഭാര്യയായി. അവിടെ നിന്ന് ഒരു അമ്മയാകാനുള്ള മനോഹരമായ യാത്രയിലേക്ക്.
+ജീവിതം അവൾക്ക് നൽകിയ ഏറ്റവും വിലയേറിയ സമ്മാനം.
+ഇന്ന്. 23 ഓഗസ്റ്റ് 2026. Happy 22nd Birthday, Fathima Rinsha!
+22 വർഷങ്ങൾ. ഒരുപാട് ഓർമ്മകൾ. ഒരുപാട് ചിരികൾ. ചില കണ്ണുനീർ തുള്ളികൾ. ഒരുപാട് സ്നേഹം. അതിലേറെ മനോഹരമായ സ്വപ്നങ്ങൾ.
+ഒരു കുഞ്ഞു രാജകുമാരിയായി തുടങ്ങിയ യാത്ര, ഇന്ന് ഒരു ഭാര്യയുടെയും അമ്മയുടെയും സ്നേഹപൂർണ്ണമായ ജീവിതത്തിലേക്ക് എത്തിനിൽക്കുന്നു.
+ഇനിയും ഒരുപാട് മനോഹരമായ വർഷങ്ങൾ മുന്നിലുണ്ട്.
+നിന്റെ ഓരോ സ്വപ്നങ്ങളും പൂവണിയട്ടെ. ഓരോ ദിവസവും സന്തോഷം നിറയട്ടെ. നിന്റെ ജീവിതത്തിൽ സ്നേഹവും സമാധാനവും എന്നും കൂടെയുണ്ടാകട്ടെ.
+ജന്മദിനാശംസകൾ ഫാത്തിമ റിൻഷാ. ഇന്നത്തെ ദിവസം മാത്രമല്ല, നിന്റെ ജീവിതത്തിലെ ഓരോ ദിവസവും ഇതുപോലെ തന്നെ മനോഹരമായിരിക്കട്ടെ.
+Happy 22nd Birthday!`;
+
+    document.getElementById('play-journey-narration')?.addEventListener('click', function() {
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+        this.textContent = '🗣️ Play Full Journey Narration (Malayalam)';
+        return;
+      }
+      this.textContent = '⏹️ Stop Narration';
+      speakMalayalam(fullJourneyML);
+      const check = setInterval(() => {
+        if (!window.speechSynthesis.speaking) {
+          this.textContent = '🗣️ Play Full Journey Narration (Malayalam)';
+          clearInterval(check);
+        }
+      }, 500);
+    });
+
+    // ========== MODALS ==========
+    const modalData = {
+      childhood: { title: 'Childhood 🌸', date: 'The Early Years', text: 'Once upon a time, a little girl with big dreams and a pure heart came into this world. That little girl grew up to become the most beautiful part of my life.', images: ['school-age.jpeg'], ml: 'ബാല്യകാലം. ഒരു ചെറിയ പെൺകുട്ടി വലിയ സ്വപ്നങ്ങളുമായി ഈ ലോകത്തിലേക്ക് വന്നു. അവൾ ഇന്ന് എന്റെ ജീവിതത്തിന്റെ ഏറ്റവും സുന്ദരമായ ഭാഗമായി.' },
+      school: { title: 'School Age 📚', date: 'Teenage Years', text: 'Bright, curious and full of life. These were the years that shaped the amazing woman standing beside me today.', images: ['teenage.jpeg'], ml: 'സ്കൂൾ ദിനങ്ങൾ. ജിജ്ഞാസയും ജീവിതവും നിറഞ്ഞ കാലം. ഇന്ന് എന്റെ അരികിൽ നിൽക്കുന്ന അത്ഭുത സ്ത്രീയെ രൂപപ്പെടുത്തിയ വർഷങ്ങൾ.' },
+      'finish-school': { title: 'School Finished 🎓', date: 'Around Age 18', text: 'A new chapter of life began. Little did we know that destiny was about to write the most beautiful love story.', images: ['teenage.jpeg'], ml: 'സ്കൂൾ കഴിഞ്ഞു. ഒരു പുതിയ അധ്യായം തുടങ്ങി. വിധി ഏറ്റവും സുന്ദരമായ പ്രണയകഥ എഴുതാൻ പോകുകയായിരുന്നു.' },
+      engagement: { title: 'Engagement 💍', date: '22 June 2022', text: 'The day I asked you to be mine forever. Our hearts said yes, and the rest is our beautiful history.', images: ['couple-blue.jpeg'], ml: 'വിവാഹനിശ്ചയം. ഞാൻ നിങ്ങളോട് എന്നും എന്റേതാകാൻ ആവശ്യപ്പെട്ട ദിവസം. നമ്മുടെ ഹൃദയങ്ങൾ അതെ എന്ന് പറഞ്ഞു.' },
+      nikkah: { title: 'Nikkah 🕌', date: '03 July 2022', text: 'In the presence of Allah, we became husband and wife. The most sacred and joyful day of our lives.', images: ['nikhah photo.jpeg'], ml: 'നിക്കാഹ്. അല്ലാഹുവിന്റെ സാന്നിധ്യത്തിൽ ഞങ്ങൾ ഭർത്താവും ഭാര്യയുമായി. ഞങ്ങളുടെ ജീവിതത്തിലെ ഏറ്റവും പവിത്രമായ ദിവസം.' },
+      marriage: { title: 'Our Wedding ❤️', date: '10 October 2023', text: 'You looked like a queen in red. I was the luckiest man alive. Every time I see this photo, my heart still skips a beat.', images: ['marrage photo.jpeg'], ml: 'വിവാഹം. ചുവപ്പിൽ നിങ്ങൾ ഒരു രാജ്ഞിയായിരുന്നു. ഞാൻ ഏറ്റവും ഭാഗ്യവാനായ മനുഷ്യനായിരുന്നു.' },
+      pregnancy: { title: 'Pregnancy 🤰', date: '15 June 2025', text: 'The most beautiful news we ever received. Our little miracle was growing inside you. Nine months of pure love and anticipation.', images: ['pregnancy.jpeg'], ml: 'ഗർഭകാലം. ഞങ്ങൾക്ക് ലഭിച്ച ഏറ്റവും സുന്ദരമായ വാർത്ത. നമ്മുടെ ചെറിയ അത്ഭുതം നിങ്ങൾക്കുള്ളിൽ വളർന്നു.' },
+      mother: { title: 'You Became a Mother 👩‍👧', date: '21 January 2026', text: 'Our precious baby girl arrived. Looking at her, I see you. You are the most loving, caring and beautiful mother. Our family is complete.', images: ['she is a mother of babygirl.jpeg'], ml: 'നിങ്ങൾ അമ്മയായി. നമ്മുടെ വിലയേറിയ മകൾ വന്നു. അവളെ നോക്കുമ്പോൾ ഞാൻ നിങ്ങളെ കാണുന്നു. നിങ്ങൾ ഏറ്റവും സ്നേഹമുള്ള അമ്മയാണ്.' },
+      today: { title: 'Happy 22nd Birthday! 🎂', date: '23 August 2026', text: 'Today we celebrate YOU — the amazing wife, the incredible mother, and the love of my life. May this year bring you closer to all your dreams. I love you more than words can say.', images: ['happy birthday wises right side one photo.jpeg'], ml: 'ജന്മദിനാശംസകൾ! ഇന്ന് ഞങ്ങൾ നിങ്ങളെ ആഘോഷിക്കുന്നു. അത്ഭുതകരമായ ഭാര്യ, അമ്മ, എന്റെ ജീവിതത്തിന്റെ സ്നേഹം. ഞാൻ നിങ്ങളെ വാക്കുകൾക്കപ്പുറം സ്നേഹിക്കുന്നു.' }
+    };
+
+    const overlay = document.getElementById('modal-overlay');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.getElementById('modal-body');
+
+    document.querySelectorAll('.timeline-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const data = modalData[card.dataset.modal];
+        if (!data) return;
+        modalTitle.textContent = data.title;
+        let html = `<div class="date-badge">${data.date}</div><p>${data.text}</p>`;
+        if (data.images?.length) {
+          html += '<div class="modal-photos">';
+          data.images.forEach(src => { html += `<img src="${src}" alt="${data.title}" loading="lazy">`; });
+          html += '</div>';
+        }
+        if (data.ml) {
+          html += `<button class="narrate-photo-btn" onclick="speakMalayalam('${data.ml.replace(/'/g, "\\'")}')">🗣️ Listen in Malayalam</button>`;
+        }
+        modalBody.innerHTML = html;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeModal() { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+
+    // Gallery filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.album-item').forEach(item => {
+          item.classList.toggle('hidden', !(filter === 'all' || item.dataset.category === filter));
+        });
+      });
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    let currentImages = [], currentIndex = 0;
+
+    function openLightbox(src) {
+      currentImages = Array.from(document.querySelectorAll('.album-item:not(.hidden)')).map(i => i.dataset.full);
+      currentIndex = Math.max(0, currentImages.indexOf(src));
+      lightboxImg.src = currentImages[currentIndex];
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Speak Malayalam if available
+      const item = document.querySelector(`.album-item[data-full="${src}"]`);
+      if (item && item.dataset.ml) {
+        setTimeout(() => speakMalayalam(item.dataset.ml), 400);
+      }
+    }
+
+    function showLightboxImage(i) {
+      currentIndex = (i + currentImages.length) % currentImages.length;
+      lightboxImg.src = currentImages[currentIndex];
+    }
+
+    document.querySelectorAll('.album-item').forEach(item => {
+      item.addEventListener('click', () => openLightbox(item.dataset.full));
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', () => {
+      lightbox.classList.remove('active'); document.body.style.overflow = '';
+      window.speechSynthesis && window.speechSynthesis.cancel();
+    });
+    document.getElementById('lightbox-prev').addEventListener('click', () => showLightboxImage(currentIndex - 1));
+    document.getElementById('lightbox-next').addEventListener('click', () => showLightboxImage(currentIndex + 1));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) { lightbox.classList.remove('active'); document.body.style.overflow = ''; } });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeModal(); lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+      if (lightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') showLightboxImage(currentIndex - 1);
+        if (e.key === 'ArrowRight') showLightboxImage(currentIndex + 1);
+      }
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Expose for modal buttons
+    window.speakMalayalam = speakMalayalam;
+  </script>
+</body>
+</html>

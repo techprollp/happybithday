@@ -1157,7 +1157,7 @@
           <div class="count-item"><span id="seconds">00</span><small>Secs</small></div>
         </div>
       </div>
-      <div class="dob-form">
+      <div class="dob-form" id="dob-form" style="display:none; opacity:0; transition: opacity 0.8s ease;">
         <label for="dob-input">Enter your Date of Birth to unlock ✨</label>
         <input type="text" id="dob-input" placeholder="DD/MM/YYYY" maxlength="10" autocomplete="off">
         <button id="unlock-btn">Open My Heart ❤️</button>
@@ -1513,9 +1513,17 @@
         document.getElementById('minutes').textContent = '00';
         document.getElementById('seconds').textContent = '00';
 
+        // Show DOB entering form after countdown finishes
+        const dobForm = document.getElementById('dob-form');
+        if (dobForm && dobForm.style.display === 'none') {
+          dobForm.style.display = 'block';
+          setTimeout(() => { dobForm.style.opacity = '1'; }, 50);
+        }
+
         if (!birthdayTriggered) {
           birthdayTriggered = true;
-          showBirthdayArrived();
+          // Optional celebration screen - user can still enter DOB on lock screen
+          // showBirthdayArrived();
         }
         return;
       }

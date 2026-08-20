@@ -355,16 +355,21 @@
       100% { opacity: 1; transform: scale(1) translateY(0); }
     }
     .wishes-photo {
-      max-width: 360px; margin: 0 auto 1.8rem; border-radius: 20px; overflow: hidden;
-      box-shadow: var(--shadow);
+      max-width: 360px; margin: 0 auto 1.8rem; border-radius: 22px; overflow: hidden;
+      box-shadow: 0 20px 50px rgba(196,30,58,0.2), inset 0 1px 0 rgba(255,255,255,0.6);
       animation: photoReveal 1.8s cubic-bezier(0.34,1.56,0.64,1) both;
       position: relative;
+      background: rgba(255,255,255,0.28);
+      backdrop-filter: blur(16px) saturate(1.4);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+      border: 1px solid rgba(255,255,255,0.5);
+      padding: 10px;
     }
     @keyframes photoReveal {
       0% { opacity: 0; transform: scale(0.6) rotate(-5deg); }
       100% { opacity: 1; transform: scale(1) rotate(0); }
     }
-    .wishes-photo img { width: 100%; display: block; }
+    .wishes-photo img { width: 100%; display: block; border-radius: 14px; }
     .wishes-photo::before {
       content: '';
       position: absolute; inset: -4px;
@@ -426,6 +431,9 @@
       display: inline-block;
       cursor: pointer;
       margin: 1.5rem 0;
+      padding: 20px;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
     .gift-box {
       width: 160px;
@@ -433,11 +441,19 @@
       position: relative;
       transform-style: preserve-3d;
       transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      margin: 0 auto;
+    }
+    .gift-box:hover {
+      transform: scale(1.08) rotate(-3deg);
     }
     .gift-box.open {
-      transform: scale(0.3) translateY(-80px);
-      opacity: 0;
+      animation: giftPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
       pointer-events: none;
+    }
+    @keyframes giftPop {
+      0% { transform: scale(1); opacity: 1; }
+      40% { transform: scale(1.25) rotate(8deg); }
+      100% { transform: scale(0.2) translateY(-100px) rotate(-15deg); opacity: 0; }
     }
     .gift-lid {
       position: absolute;
@@ -499,47 +515,489 @@
       0%, 100% { opacity: 0.7; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.05); }
     }
+    /* Dark mode gift reveal with candle light */
     .gift-reveal {
       display: none;
-      max-width: 420px;
-      margin: 0 auto;
-      animation: giftReveal 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      background: radial-gradient(ellipse at 50% 30%, #2a1810 0%, #0d0604 55%, #050202 100%);
+      overflow-y: auto;
+      padding: 2rem 1.2rem 4rem;
+      text-align: center;
+      animation: darkFadeIn 0.8s ease both;
     }
     .gift-reveal.show {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
     }
-    @keyframes giftReveal {
-      0% { opacity: 0; transform: scale(0.5) translateY(40px); }
-      100% { opacity: 1; transform: scale(1) translateY(0); }
+    @keyframes darkFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    /* Soft candle light vignette */
+    .gift-reveal::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 45%, rgba(255, 180, 60, 0.18) 0%, transparent 45%),
+                  radial-gradient(circle at 50% 20%, rgba(255, 120, 40, 0.08) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+      animation: candlePulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes candlePulse {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    .gift-reveal > * {
+      position: relative;
+      z-index: 1;
     }
     .gift-reveal h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 5vw, 2.4rem);
-      color: var(--deep-red);
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 10px rgba(196,30,58,0.15);
+      font-size: clamp(1.7rem, 5.5vw, 2.6rem);
+      color: #ffd9a0;
+      margin: 1.5rem 0 1.2rem;
+      text-shadow: 0 0 20px rgba(255, 180, 60, 0.5), 0 2px 8px rgba(0,0,0,0.6);
     }
     .gift-reveal img {
       width: 100%;
-      max-width: 280px;
-      border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(196,30,58,0.25);
-      margin-bottom: 1.2rem;
-      border: 4px solid white;
+      max-width: 260px;
+      border-radius: 18px;
+      box-shadow: 0 0 30px rgba(255, 160, 50, 0.25), 0 15px 40px rgba(0,0,0,0.5);
+      margin-bottom: 1rem;
+      border: 3px solid rgba(255, 200, 120, 0.35);
+      transform: perspective(800px) rotateY(-4deg) rotateX(3deg);
+      transition: transform 0.5s ease;
+    }
+    .gift-reveal img:hover {
+      transform: perspective(800px) rotateY(0) rotateX(0) scale(1.03);
     }
     .gift-reveal p {
       font-size: 1.05rem;
-      color: #444;
-      line-height: 1.6;
-      margin-bottom: 0.8rem;
+      color: #e8d5c0;
+      line-height: 1.65;
+      margin-bottom: 0.7rem;
+      max-width: 380px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
     }
     .gift-reveal .big-heart {
       font-size: 3rem;
       animation: heartBeat 1.2s ease-in-out infinite;
+      filter: drop-shadow(0 0 12px rgba(255,100,100,0.6));
+    }
+    .gift-reveal .signature {
+      color: #ffc080 !important;
+    }
+    .gift-close-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #ffd9a0;
+      font-size: 1.4rem;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     @keyframes heartBeat {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.25); }
+    }
+
+    /* ========== CANDLELIGHT DARK MODE (after gift) ========== */
+    body.candle-mode {
+      background: #0a0503 !important;
+    }
+    body.candle-mode #main-content {
+      filter: brightness(0.15) contrast(1.1);
+      transition: filter 1.2s ease;
+    }
+    body.candle-mode #main-content.lit {
+      filter: none;
+    }
+    /* Full-screen dark overlay with spotlight hole */
+    #candle-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 4000;
+      pointer-events: none;
+      background: radial-gradient(
+        circle 140px at var(--cx, 50%) var(--cy, 40%),
+        transparent 0%,
+        transparent 35%,
+        rgba(8, 3, 1, 0.55) 55%,
+        rgba(5, 2, 1, 0.92) 75%,
+        #030101 100%
+      );
+      transition: background 0.08s linear;
+    }
+    body.candle-mode #candle-overlay {
+      display: block;
+    }
+    /* Moving candle lamp */
+    #candle-lamp {
+      display: none;
+      position: fixed;
+      z-index: 4001;
+      width: 36px;
+      height: 70px;
+      pointer-events: none;
+      transform: translate(-50%, -90%);
+      filter: drop-shadow(0 0 18px rgba(255, 160, 40, 0.7));
+      transition: none;
+    }
+    body.candle-mode #candle-lamp {
+      display: block;
+    }
+    #candle-lamp .lamp-body {
+      width: 14px;
+      height: 36px;
+      background: linear-gradient(180deg, #fff8e0, #e8c070 60%, #c09040);
+      margin: 0 auto;
+      border-radius: 3px 3px 2px 2px;
+      position: relative;
+      top: 28px;
+    }
+    #candle-lamp .lamp-flame {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 22px;
+      height: 34px;
+      background: radial-gradient(ellipse at 50% 85%, #fff 0%, #ffef00 15%, #ff8c00 45%, #ff4500 70%, transparent 85%);
+      border-radius: 50% 50% 25% 25%;
+      animation: lampFlicker 0.22s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 10px #ff0) drop-shadow(0 0 22px #ff8c00) drop-shadow(0 0 35px rgba(255,100,0,0.4));
+      z-index: 2;
+    }
+    #candle-lamp .lamp-flame::before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 16px;
+      left: 50%;
+      bottom: 8px;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse, #fff 0%, #ff0 40%, transparent 70%);
+      border-radius: 50%;
+      animation: innerFlicker 0.18s ease-in-out infinite alternate;
+    }
+    @keyframes lampFlicker {
+      0% { transform: translateX(-50%) scaleY(1) scaleX(1) rotate(-6deg); opacity: 0.8; }
+      50% { transform: translateX(-48%) scaleY(1.15) scaleX(0.9) rotate(2deg); opacity: 1; }
+      100% { transform: translateX(-52%) scaleY(1.25) scaleX(1.1) rotate(7deg); opacity: 0.95; }
+    }
+    @keyframes innerFlicker {
+      0% { opacity: 0.7; transform: translateX(-50%) scale(0.9); }
+      100% { opacity: 1; transform: translateX(-50%) scale(1.2); }
+    }
+    /* Particle smoke effect */
+    #candle-lamp .smoke-particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(180, 180, 180, 0.35);
+      filter: blur(3px);
+      pointer-events: none;
+      top: -5px;
+      left: 50%;
+      animation: smokeRise 2.8s ease-out infinite;
+    }
+    #candle-lamp .smoke-particle:nth-child(1) { animation-delay: 0s; left: 40%; }
+    #candle-lamp .smoke-particle:nth-child(2) { animation-delay: 0.6s; left: 55%; width: 10px; height: 10px; }
+    #candle-lamp .smoke-particle:nth-child(3) { animation-delay: 1.2s; left: 45%; width: 7px; height: 7px; }
+    #candle-lamp .smoke-particle:nth-child(4) { animation-delay: 1.8s; left: 60%; width: 9px; height: 9px; }
+    #candle-lamp .smoke-particle:nth-child(5) { animation-delay: 0.3s; left: 35%; width: 6px; height: 6px; }
+    @keyframes smokeRise {
+      0% {
+        opacity: 0.5;
+        transform: translateX(-50%) translateY(0) scale(0.6);
+      }
+      30% {
+        opacity: 0.4;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(calc(-50% + 15px)) translateY(-55px) scale(1.8);
+      }
+    }
+    /* Content becomes visible under candle light via mix-blend */
+    body.candle-mode .timeline-card,
+    body.candle-mode .album-item,
+    body.candle-mode .message-card,
+    body.candle-mode .wishes-photo,
+    body.candle-mode .hero-text,
+    body.candle-mode .section-title,
+    body.candle-mode .final-message,
+    body.candle-mode .signature {
+      transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+    /* Scroll reveal animations in candle mode */
+    body.candle-mode .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    body.candle-mode .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Hint text for candle mode */
+    #candle-hint {
+      display: none;
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4002;
+      background: rgba(0,0,0,0.6);
+      color: #ffd9a0;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,200,100,0.25);
+      pointer-events: none;
+      animation: pulseHint 2s ease-in-out infinite;
+    }
+    body.candle-mode #candle-hint {
+      display: block;
+    }
+
+    /* ========== 3D Cake with Physics-like Cutting + Glassmorphism ========== */
+    .cake-container {
+      width: 220px;
+      height: 200px;
+      margin: 1.8rem auto 1.2rem;
+      position: relative;
+      perspective: 900px;
+      display: none;
+      transform-style: preserve-3d;
+    }
+    .cake-container.show {
+      display: block;
+      animation: cakeAppear 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    @keyframes cakeAppear {
+      0% { opacity: 0; transform: scale(0.3) rotateX(25deg) rotateY(-40deg) translateY(40px); }
+      60% { opacity: 1; transform: scale(1.08) rotateX(-5deg) rotateY(8deg) translateY(-8px); }
+      100% { opacity: 1; transform: scale(1) rotateX(0) rotateY(0) translateY(0); }
+    }
+    .cake {
+      width: 150px;
+      height: 100px;
+      margin: 0 auto;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(12deg) rotateY(-8deg);
+      transition: transform 0.6s ease;
+    }
+    .cake-container.cutting .cake {
+      animation: cakeShake 0.5s ease-in-out 0.35s;
+    }
+    @keyframes cakeShake {
+      0%, 100% { transform: rotateX(12deg) rotateY(-8deg) translateX(0); }
+      25% { transform: rotateX(14deg) rotateY(-6deg) translateX(-3px); }
+      50% { transform: rotateX(10deg) rotateY(-10deg) translateX(4px); }
+      75% { transform: rotateX(13deg) rotateY(-7deg) translateX(-2px); }
+    }
+    .cake-layer {
+      position: absolute;
+      left: 0;
+      border-radius: 10px / 6px;
+      transform-style: preserve-3d;
+      box-shadow:
+        0 4px 0 rgba(0,0,0,0.08),
+        0 8px 20px rgba(0,0,0,0.15),
+        inset 0 2px 4px rgba(255,255,255,0.4);
+    }
+    /* Glassmorphism plate under cake */
+    .cake-plate {
+      position: absolute;
+      width: 170px;
+      height: 18px;
+      left: 50%;
+      bottom: -12px;
+      transform: translateX(-50%) rotateX(70deg);
+      background: rgba(255,255,255,0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 50%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    .cake-bottom {
+      height: 38px;
+      width: 100%;
+      background: linear-gradient(165deg, #f8d9b0 0%, #e8b87a 40%, #d4a06a 100%);
+      bottom: 0;
+    }
+    .cake-middle {
+      height: 30px;
+      width: 88%;
+      left: 6%;
+      background: linear-gradient(165deg, #ffc0d0 0%, #ff8fab 45%, #f07090 100%);
+      bottom: 34px;
+    }
+    .cake-top {
+      height: 24px;
+      width: 72%;
+      left: 14%;
+      background: linear-gradient(165deg, #fff5f8 0%, #ffd0e0 40%, #ffb0c8 100%);
+      bottom: 60px;
+      transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.8s;
+      transform-origin: left center;
+    }
+    .cake-frosting {
+      position: absolute;
+      width: 110%;
+      height: 14px;
+      left: -5%;
+      top: -7px;
+      background: radial-gradient(ellipse at center, #fff 0%, #ffe4ec 60%, #ffb6c1 100%);
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(255,105,180,0.3);
+    }
+    .candle {
+      position: absolute;
+      width: 9px;
+      height: 32px;
+      background: linear-gradient(180deg, #fffef5 0%, #ffe8a0 60%, #f0d080 100%);
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 80px;
+      border-radius: 3px;
+      z-index: 6;
+      box-shadow: 1px 0 3px rgba(0,0,0,0.15);
+    }
+    .flame {
+      position: absolute;
+      width: 16px;
+      height: 26px;
+      left: 50%;
+      bottom: 100%;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at 50% 85%, #fff 0%, #ffef00 18%, #ff8c00 48%, #ff4500 72%, transparent 85%);
+      border-radius: 50% 50% 25% 25%;
+      animation: flicker 0.25s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 8px #ff0) drop-shadow(0 0 16px #ff8c00) drop-shadow(0 0 28px rgba(255,80,0,0.35));
+      z-index: 7;
+    }
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scaleY(1) scaleX(1) rotate(-5deg); opacity: 0.8; }
+      50% { transform: translateX(-48%) scaleY(1.12) scaleX(0.92) rotate(2deg); opacity: 1; }
+      100% { transform: translateX(-52%) scaleY(1.22) scaleX(1.08) rotate(6deg); opacity: 0.92; }
+    }
+    /* Knife with physics motion */
+    .knife {
+      position: absolute;
+      width: 95px;
+      height: 10px;
+      right: -45px;
+      top: 38%;
+      z-index: 12;
+      opacity: 0;
+      transform-origin: 90% 50%;
+      filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.25));
+    }
+    .knife::before {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 100%;
+      left: 0;
+      background: linear-gradient(180deg, #f0f0f0 0%, #c8c8c8 40%, #a0a0a0 100%);
+      border-radius: 2px 0 0 2px;
+      clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 70%);
+    }
+    .knife::after {
+      content: '';
+      position: absolute;
+      width: 32%;
+      height: 140%;
+      right: 0;
+      top: -20%;
+      background: linear-gradient(90deg, #8b5a2b, #c4956a);
+      border-radius: 3px;
+    }
+    .cake-container.cutting .knife {
+      animation: cutCakePhysics 1.4s cubic-bezier(0.22, 0.68, 0.35, 1) forwards;
+    }
+    @keyframes cutCakePhysics {
+      0% {
+        opacity: 0;
+        transform: rotate(55deg) translate(30px, -20px) scale(0.9);
+      }
+      15% {
+        opacity: 1;
+        transform: rotate(25deg) translate(10px, -5px) scale(1);
+      }
+      35% {
+        opacity: 1;
+        transform: rotate(5deg) translate(-5px, 2px);
+      }
+      55% {
+        opacity: 1;
+        transform: rotate(-18deg) translate(-35px, 12px);
+      }
+      75% {
+        opacity: 0.9;
+        transform: rotate(-28deg) translate(-55px, 22px);
+      }
+      100% {
+        opacity: 0;
+        transform: rotate(-35deg) translate(-70px, 30px) scale(0.95);
+      }
+    }
+    /* Slice separates with gravity-like fall */
+    .cake-container.cutting .cake-top {
+      animation: slicePhysics 1.1s 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    @keyframes slicePhysics {
+      0% {
+        transform: translateX(0) rotate(0) translateY(0);
+        opacity: 1;
+      }
+      40% {
+        transform: translateX(12px) rotate(6deg) translateY(-4px);
+        opacity: 1;
+      }
+      70% {
+        transform: translateX(28px) rotate(14deg) translateY(8px);
+        opacity: 0.95;
+      }
+      100% {
+        transform: translateX(42px) rotate(22deg) translateY(28px);
+        opacity: 0.7;
+      }
+    }
+    /* Soft glass glow around cake when revealed */
+    .cake-container.show::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle, rgba(255,182,193,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+      animation: cakeGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes cakeGlow {
+      0% { opacity: 0.5; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1.05); }
     }
 
     /* Modal */
@@ -601,6 +1059,19 @@
 </head>
 <body>
   <canvas id="confetti-canvas"></canvas>
+
+  <!-- Candlelight dark mode elements -->
+  <div id="candle-overlay"></div>
+  <div id="candle-lamp">
+    <div class="smoke-particle"></div>
+    <div class="smoke-particle"></div>
+    <div class="smoke-particle"></div>
+    <div class="smoke-particle"></div>
+    <div class="smoke-particle"></div>
+    <div class="lamp-flame"></div>
+    <div class="lamp-body"></div>
+  </div>
+  <div id="candle-hint">🕯️ Move your finger / mouse to light up the memories</div>
 
   <audio id="bg-music" loop preload="auto">
     <source src="bg-music.mp3" type="audio/mpeg">
@@ -929,11 +1400,29 @@
       </div>
 
       <div class="gift-reveal" id="gift-reveal">
+        <button class="gift-close-btn" id="gift-close-btn" title="Close">×</button>
         <h2>Happy Birthday My Love ❤️</h2>
         <img src="happy birthday wises right side one photo.jpeg" alt="My Love">
+
+        <!-- 3D Cake Cutting -->
+        <div class="cake-container" id="cake-container">
+          <div class="cake">
+            <div class="cake-plate"></div>
+            <div class="cake-layer cake-bottom"></div>
+            <div class="cake-layer cake-middle"></div>
+            <div class="cake-layer cake-top">
+              <div class="cake-frosting"></div>
+            </div>
+            <div class="candle">
+              <div class="flame"></div>
+            </div>
+            <div class="knife"></div>
+          </div>
+        </div>
+
         <p>To the most beautiful woman in my world — my wife, my best friend, and the amazing mother of our little princess.</p>
         <p>Thank you for filling my life with love, laughter and endless happiness. I am so lucky to have you.</p>
-        <p style="font-weight:600;color:var(--primary);">May this year bring you everything your heart desires.</p>
+        <p style="font-weight:600;color:#ffc080;">May this year bring you everything your heart desires.</p>
         <div class="big-heart">💖</div>
         <p class="signature" style="margin-top:1rem;">I love you forever,<br>Your Husband</p>
       </div>
@@ -1150,18 +1639,18 @@
       canvas.height = window.innerHeight;
       const pieces = [];
       const colors = ['#c41e3a','#ff6b9d','#d4af37','#ff9ecd','#fff','#ff4757','#ffd700','#ff69b4'];
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 280; i++) {
         pieces.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height - canvas.height,
-          w: 6 + Math.random() * 9,
-          h: 5 + Math.random() * 7,
+          w: 5 + Math.random() * 11,
+          h: 4 + Math.random() * 8,
           color: colors[Math.floor(Math.random() * colors.length)],
-          speed: 2.2 + Math.random() * 4.5,
+          speed: 2 + Math.random() * 5,
           rot: Math.random() * 360,
-          rotSpeed: -5 + Math.random() * 10,
-          shape: Math.random() > 0.7 ? 'heart' : (Math.random() > 0.5 ? 'circle' : 'rect'),
-          sway: Math.random() * 2
+          rotSpeed: -6 + Math.random() * 12,
+          shape: Math.random() > 0.65 ? 'heart' : (Math.random() > 0.45 ? 'circle' : 'rect'),
+          sway: Math.random() * 2.5
         });
       }
       let frame = 0;
@@ -1169,7 +1658,7 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         pieces.forEach(p => {
           p.y += p.speed;
-          p.x += Math.sin(frame * 0.04 + p.sway) * 1.3;
+          p.x += Math.sin(frame * 0.04 + p.sway) * 1.5;
           p.rot += p.rotSpeed;
           ctx.save();
           ctx.translate(p.x, p.y);
@@ -1178,14 +1667,14 @@
           if (p.shape === 'circle') {
             ctx.beginPath(); ctx.arc(0, 0, p.w/2, 0, Math.PI*2); ctx.fill();
           } else if (p.shape === 'heart') {
-            ctx.font = (p.w+4) + 'px Arial'; ctx.fillText('❤', -p.w/2, p.h/2);
+            ctx.font = (p.w+5) + 'px Arial'; ctx.fillText('❤', -p.w/2, p.h/2);
           } else {
             ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
           }
           ctx.restore();
         });
         frame++;
-        if (frame < 190) requestAnimationFrame(animate);
+        if (frame < 220) requestAnimationFrame(animate);
         else ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
       animate();
@@ -1362,26 +1851,190 @@ Happy 22nd Birthday!`;
     // Expose for modal buttons
     window.speakMalayalam = speakMalayalam;
 
-    // ========== GIFT BOX ==========
+    // ========== GIFT BOX (Dark Mode + Candle Light) ==========
     const giftBox = document.getElementById('gift-box');
     const giftReveal = document.getElementById('gift-reveal');
     const giftHint = document.getElementById('gift-hint');
+    const giftWrapper = document.getElementById('gift-box-wrapper');
     let giftOpened = false;
+    let audioCtx = null;
 
-    document.getElementById('gift-box-wrapper').addEventListener('click', () => {
+    function getAudioCtx() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      return audioCtx;
+    }
+
+    function playPopperSound() {
+      try {
+        const ctx = getAudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.setValueAtTime(600, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 0.25);
+        gain.gain.setValueAtTime(0.4, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.3);
+        setTimeout(() => {
+          const osc2 = ctx.createOscillator();
+          const gain2 = ctx.createGain();
+          osc2.connect(gain2);
+          gain2.connect(ctx.destination);
+          osc2.frequency.setValueAtTime(900, ctx.currentTime);
+          osc2.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.2);
+          gain2.gain.setValueAtTime(0.3, ctx.currentTime);
+          gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+          osc2.start(ctx.currentTime);
+          osc2.stop(ctx.currentTime + 0.25);
+        }, 80);
+      } catch(e) {}
+    }
+
+    // Knife cutting sound (short swoosh + soft impact)
+    function playCuttingSound() {
+      try {
+        const ctx = getAudioCtx();
+        // Swoosh
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const filter = ctx.createBiquadFilter();
+        osc.type = 'sawtooth';
+        filter.type = 'lowpass';
+        filter.frequency.value = 1200;
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.setValueAtTime(400, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 0.35);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.4);
+        // Soft impact
+        setTimeout(() => {
+          const osc2 = ctx.createOscillator();
+          const gain2 = ctx.createGain();
+          osc2.type = 'triangle';
+          osc2.connect(gain2);
+          gain2.connect(ctx.destination);
+          osc2.frequency.setValueAtTime(150, ctx.currentTime);
+          osc2.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.15);
+          gain2.gain.setValueAtTime(0.25, ctx.currentTime);
+          gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+          osc2.start(ctx.currentTime);
+          osc2.stop(ctx.currentTime + 0.2);
+        }, 280);
+      } catch(e) {}
+    }
+
+    function openGift() {
       if (giftOpened) return;
       giftOpened = true;
       giftBox.classList.add('open');
       giftHint.style.display = 'none';
+      playPopperSound();
+      if (typeof launchConfetti === 'function') {
+        launchConfetti();
+        setTimeout(launchConfetti, 400);
+        setTimeout(launchConfetti, 900);
+      }
       setTimeout(() => {
         giftReveal.classList.add('show');
-        // Confetti burst
-        if (typeof launchConfetti === 'function') launchConfetti();
-        // Speak short wish
+        document.body.style.overflow = 'hidden';
+        const cake = document.getElementById('cake-container');
+        if (cake) {
+          cake.classList.add('show');
+          setTimeout(() => {
+            cake.classList.add('cutting');
+            playCuttingSound();
+          }, 1000);
+        }
         if (window.speechSynthesis) {
           speakMalayalam('ഹാപ്പി ബർത്ത്ഡേ മൈ ലവ്. ഞാൻ നിന്നെ എന്നും സ്നേഹിക്കുന്നു.');
         }
-      }, 700);
+      }, 650);
+    }
+
+    function closeGiftReveal() {
+      giftReveal.classList.remove('show');
+      document.body.style.overflow = '';
+      // Activate full-site candlelight dark mode
+      activateCandleMode();
+    }
+
+    function activateCandleMode() {
+      document.body.classList.add('candle-mode');
+      // Add reveal classes for scroll animation
+      document.querySelectorAll('.timeline-card, .album-item, .message-card, .section-title, .wishes-photo, .final-message, .hero-text').forEach(el => {
+        el.classList.add('reveal-on-scroll');
+      });
+      // Initial candle position (center)
+      moveCandle(window.innerWidth / 2, window.innerHeight * 0.4);
+      // Start scroll observer
+      initScrollReveal();
+      // Hide hint after a few seconds
+      setTimeout(() => {
+        const hint = document.getElementById('candle-hint');
+        if (hint) hint.style.opacity = '0';
+      }, 6000);
+    }
+
+    function moveCandle(x, y) {
+      const overlay = document.getElementById('candle-overlay');
+      const lamp = document.getElementById('candle-lamp');
+      if (!overlay || !lamp) return;
+      overlay.style.setProperty('--cx', x + 'px');
+      overlay.style.setProperty('--cy', y + 'px');
+      lamp.style.left = x + 'px';
+      lamp.style.top = y + 'px';
+    }
+
+    // Desktop: mouse move
+    document.addEventListener('mousemove', e => {
+      if (!document.body.classList.contains('candle-mode')) return;
+      moveCandle(e.clientX, e.clientY);
+    });
+
+    // Mobile: touch move
+    document.addEventListener('touchmove', e => {
+      if (!document.body.classList.contains('candle-mode')) return;
+      if (e.touches.length > 0) {
+        moveCandle(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    // Also respond to touch start
+    document.addEventListener('touchstart', e => {
+      if (!document.body.classList.contains('candle-mode')) return;
+      if (e.touches.length > 0) {
+        moveCandle(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    // Scroll reveal animation
+    function initScrollReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    }
+
+    giftWrapper.addEventListener('click', openGift);
+    giftWrapper.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      openGift();
+    }, { passive: false });
+
+    document.getElementById('gift-close-btn')?.addEventListener('click', closeGiftReveal);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && giftReveal.classList.contains('show')) closeGiftReveal();
     });
   </script>
 </body>
